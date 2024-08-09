@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.XYChart?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.chart.PieChart?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="csc.arizona.pbjava_asset_portfolio.Controller.AssetPortfolioController"
+            fx:id="homePage"
+            stylesheets="@css/application.css"
+            styleClass="pane"
+>
+    <top>
+        <HBox fx:id="homeTopBox" alignment="CENTER" spacing="40">
+            <padding>
+                <Insets top="20" bottom="20" left="20" right="20"/>
+            </padding>
+            <VBox>
+                <Label fx:id="homePageTitle" text="Asset Tracker" >
+                    <style>
+                        -fx-font-size: 70;
+                    </style>
+                </Label>
+                <TextField fx:id="searchBar" promptText=" Search Assets . . ."/>
+            </VBox>
+
+            <VBox fx:id="loginBox" styleClass="login-vbox" spacing="5">
+                <padding>
+                    <Insets top="10" bottom="10" left="10" right="10"/>
+                </padding>
+                <TextField fx:id="usernameField" promptText="Enter Username . . ." GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <PasswordField fx:id="passwordField" promptText="Enter Password . . ." GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <HBox fx:id="buttons" styleClass="button-hbox" spacing="10">
+                    <Button fx:id="loginButton" text="Login" onAction="#onLoginButtonClick" alignment="CENTER">
+                        <style>
+                            -fx-background-radius:30px;
+                            -fx-font-size: 10pt;
+                            -fx-text-fill: blue;
+                            -fx-color: white;
+                        </style>
+                    </Button>
+                    <Button text="Create" onAction="#onCreateButtonClick" alignment="CENTER">
+                        <style>
+                            -fx-background-radius:30px;
+                            -fx-font-size: 10pt;
+                            -fx-text-fill: blue;
+                            -fx-color: white;
+                        </style>
+                    </Button>
+                </HBox>
+            </VBox>
+        </HBox>
+
+    </top>
+
+    <center>
+        <HBox fx:id="homeCenterBox" visible="true" spacing="25" alignment="CENTER">
+            <padding>
+                <Insets top="20" bottom="20" left="20" right="20"/>
+            </padding>
+            <VBox fx:id="homeLeftBox" styleClass="left-home-vbox">
+                <HBox>
+                    <padding>
+                        <Insets left="80"/>
+                    </padding>
+                    <Label fx:id="chartLabel" alignment="CENTER">
+                        Select an Asset
+                        <style>
+                            -fx-font-size: 15pt;
+                            -fx-text-fill: black;
+                        </style>
+                    </Label>
+                    <Label fx:id="updateChart" onMouseClicked="#onUpdateChartButtonClick">
+                        ↻
+                        <padding>
+                            <Insets left="20"/>
+                        </padding>
+                        <style>
+                            -fx-font-size: 15pt;
+                            -fx-text-fill: blue;
+                        </style>
+                    </Label>
+<!--                    <Button fx:id="updateChartButton" text="↻" onAction="#onUpdateChartButtonClick">-->
+<!--                        <style>-->
+<!--                            -fx-background-radius:100px;-->
+<!--                            -fx-font-size: 20pt;-->
+<!--                            -fx-text-fill: blue;-->
+<!--                            -fx-color: white;-->
+<!--                            -fx-padding: 0px;-->
+<!--                        </style>-->
+<!--                    </Button>-->
+                </HBox>
+
+                <LineChart fx:id= "graph">
+<!--                <xAxis><DateAxis/></xAxis>-->
+                    <xAxis><NumberAxis fx:id="xAxis" label="Values for X-Axis" lowerBound="0" upperBound="3" tickUnit="1"/></xAxis>
+                    <yAxis><NumberAxis fx:id="yAxis" label="Values for Y-Axis" lowerBound="0" upperBound="3" tickUnit="1"/></yAxis>
+                    <style>
+                        -fx-setMaxWidth: 400;
+                    </style>
+                </LineChart>
+                <HBox spacing="30" alignment="CENTER">
+                    <padding>
+                        <Insets top="0" bottom="0" left="0" right="0"/>
+                    </padding>
+                    <Button text="6M" onAction="#sixMonths" alignment="CENTER">
+                        <style>
+                            -fx-background-radius:30px;
+                            -fx-font-size: 10pt;
+                            -fx-text-fill: blue;
+                            -fx-color: white;
+                        </style>
+                    </Button>
+                    <Button text="3M" onAction="#threeMonths" alignment="CENTER">
+                        <style>
+                            -fx-background-radius:30px;
+                            -fx-font-size: 10pt;
+                            -fx-text-fill: blue;
+                            -fx-color: white;
+                        </style>
+                    </Button>
+                    <Button text="1M" onAction="#oneMonths" alignment="CENTER">
+                        <style>
+                            -fx-background-radius:30px;
+                            -fx-font-size: 10pt;
+                            -fx-text-fill: blue;
+                            -fx-color: white;
+                        </style>
+                    </Button>
+                    <Button text="1W" onAction="#oneWeek" alignment="CENTER">
+                        <style>
+                            -fx-background-radius:30px;
+                            -fx-font-size: 10pt;
+                            -fx-text-fill: blue;
+                            -fx-color: white;
+                        </style>
+                    </Button>
+                </HBox>
+                <ListView fx:id="homeList" minWidth="200" prefWidth="250">
+
+                </ListView>
+            </VBox>
+
+            <VBox styleClass="market-vbox" spacing="10">
+                <padding>
+                    <Insets top="20" bottom="20" left="20" right="20"/>
+                </padding>
+
+                <Label textAlignment="CENTER" style="-fx-font-size: 25;">The Market Today</Label>
+                <HBox>
+                    <Button fx:id="refreshApi" text="Refresh"  onAction="#onRefreshApiButtonClick" alignment="CENTER">
+                        <style>
+                            -fx-background-radius:30px;
+                            -fx-font-size: 10pt;
+                            -fx-text-fill: blue;
+                            -fx-color: white;
+                        </style>
+                    </Button>
+                    <Label>Stocks
+                        <style>
+                            -fx-font-size: 18;
+                            -fx-font-weight: bold;
+                        </style>
+                        <padding>
+                            <Insets left="35"/>
+                        </padding>
+                    </Label>
+                </HBox>
+                <TableView fx:id="stockTableView">
+                    <columns>
+                        <TableColumn fx:id="stockTickerColumn" text="Ticker"/>
+                        <TableColumn fx:id="stockPriceColumn" text="Price"/>
+                        <TableColumn fx:id="stockPercentChangeColumn" text="Vol"/>
+                        <TableColumn fx:id="stockPriceChangeColumn" text="Cap($B)"/>
+                    </columns>
+                </TableView>
+                <Label>
+                    Crypto
+                    <style>
+                        -fx-font-size: 18;
+                        -fx-font-weight: bold;
+                    </style>
+                    <padding>
+                        <Insets left="90"/>
+                    </padding>
+                </Label>
+<!--                <ListView fx:id="cryptoList" stylesheets="@css/list2.css">-->
+<!--                </ListView>-->
+                <TableView fx:id="cryptoTableView">
+                    <columns>
+                        <TableColumn fx:id="cryptoTickerColumn" text="Ticker"/>
+                        <TableColumn fx:id="cryptoPriceColumn" text="Price"/>
+                        <TableColumn fx:id="cryptoPercentChangeColumn" text="\%Δ"/>
+                        <TableColumn fx:id="cryptoMarketCapColumn" text="Cap($B)"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
+

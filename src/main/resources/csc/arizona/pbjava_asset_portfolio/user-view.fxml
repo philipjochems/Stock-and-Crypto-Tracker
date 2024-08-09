@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="csc.arizona.pbjava_asset_portfolio.Controller.AssetPortfolioController"
+            fx:id="userPage"
+            stylesheets="@css/user.css"
+            styleClass="pane"
+>
+<top>
+    <HBox fx:id="userTopBox" alignment="CENTER" spacing="40">
+        <padding>
+            <Insets top="1" bottom="1" left="1" right="1"/>
+        </padding>
+
+        <Button fx:id="logoutButton" text="Logout" onMouseClicked="#onLogoutButtonClick" alignment="CENTER" translateX="-17">
+            <style>
+                -fx-background-radius:30px;
+                -fx-font-size: 10pt;
+                -fx-text-fill: blue;
+                -fx-color: white;
+            </style>
+        </Button>
+
+    </HBox>
+</top>
+
+<center>
+    <VBox spacing="5" alignment="CENTER">
+        <HBox spacing="55" alignment="CENTER">
+            <padding>
+                <Insets top="10" bottom="10" left="5" right="5"/>
+            </padding>
+            <VBox>
+                <Label>Current Value:</Label>
+                <Label fx:id="portValueLabel">
+                    <style>
+                        -fx-font-size: 20;
+                    </style>
+                </Label>
+            </VBox>
+            <VBox>
+                <Label>Initial Value:</Label>
+                <Label fx:id="portInitialLabel">
+                    <style>
+                        -fx-font-size: 20;
+                    </style>
+                </Label>
+            </VBox>
+            <VBox>
+                <Label>Percent Change:</Label>
+                <Label fx:id="portChangeLabel">
+                    <style>
+                        -fx-font-size: 20;
+                    </style>
+                </Label>
+            </VBox>
+            <VBox>
+                <Label># of Assets:</Label>
+                <Label fx:id="portAssetCountLabel">
+                    <style>
+                        -fx-font-size: 20;
+                    </style>
+                </Label>
+            </VBox>
+        </HBox>
+<!--        <HBox spacing="5" alignment="CENTER">-->
+<!--            <padding>-->
+<!--                <Insets top="5" bottom="10" left="0" right="0"/>-->
+<!--            </padding>-->
+<!--        </HBox>-->
+        <HBox spacing="15" alignment="CENTER">
+            <padding>
+                <Insets top="10" bottom="10" left="10" right="10"/>
+            </padding>
+
+            <ListView fx:id="userList"
+                      minWidth="300"
+                      prefWidth="350">
+            </ListView>
+
+            <VBox spacing="10" alignment="CENTER">
+                <!--            <LineChart fx:id= "userChart">-->
+                <!--                <xAxis><NumberAxis label="Time" lowerBound="0" upperBound="3" tickUnit="1"/></xAxis>-->
+                <!--                <yAxis><NumberAxis label="Value" lowerBound="0" upperBound="3" tickUnit="1"/></yAxis>-->
+                <!--            </LineChart>-->
+                <PieChart fx:id="pieChart">
+                    <style>
+                        -fx-padding: -35;
+                        <!--                    -fx-border-color: black;-->
+                        <!--                    -fx-border-width: 3;-->
+                    </style>
+                </PieChart>
+            </VBox>
+            <ListView fx:id="followList"
+                      minWidth="70"
+                      prefWidth="125"
+                      maxWidth="150"
+                      maxHeight="750"
+                      prefHeight="500"
+                      minHeight="20">
+            </ListView>
+        </HBox>
+    </VBox>
+</center>
+
+<bottom>
+    <VBox>
+        <VBox fx:id="addAllocationVBox">
+            <padding>
+                <Insets top="10" bottom="10" left="20" right="20"/>
+            </padding>
+        </VBox>
+    </VBox>
+</bottom>
+</BorderPane>

@@ -1,0 +1,44 @@
+@font-face {
+    font-family: comfortaa;
+    src: url('../Comfortaa-Regular.ttf');
+}
+@font-face {
+    font-family: comfortaa-bold;
+    src: url('../Comfortaa-Bold.ttf');
+}
+
+.label{
+    -fx-font-family: 'comfortaa';
+    -fx-font-color: #ffffffff;
+}
+
+.pane {
+    -fx-background-color: #b0ff888f;
+}
+
+.market-vbox {
+    -fx-background-color: #e3ffd8ff;
+}
+
+.login-vbox {
+    -fx-background-color: #ffd9eaff;
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: #fff2ccff;
+}
+
+.list-cell {
+    -fx-background-color: #fff2ccff;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #fff2ccff;
+}
+
+.left-home-vbox {
+    -fx-background-color: #fff2ccff;
+}
+
+
+
